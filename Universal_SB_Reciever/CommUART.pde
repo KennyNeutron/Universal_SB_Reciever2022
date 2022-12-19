@@ -57,6 +57,11 @@ void Comm_UART() {
     
     HomeFoul=(CommUART_data[8]-32)/10;
     GuestFoul=(CommUART_data[8]-32)%10;
+    
+    BallPos=CommUART_data[10]/100;
+    Period=(CommUART_data[10]%100)/10;
+    
+    
   }
 }
 
