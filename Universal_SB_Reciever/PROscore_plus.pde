@@ -122,14 +122,22 @@ void PROscore_plus() {
   rect(width/15, (height/100)*50, height/20, height/14);
   fill(#00ff00);
   textSize(height/9);
-  text(str_HomeFoul, width/15, (height/100)*50);
+  if (HomeFoul==6) {
+    text("P", width/15, (height/100)*50);
+  } else {
+    text(str_HomeFoul, width/15, (height/100)*50);
+  }
 
   //GUEST FOUL
   fill(0);
   rect((width/15)*14, (height/100)*50, height/20, height/14);
   fill(#00ff00);
   textSize(height/9);
-  text(str_GuestFoul, (width/15)*14, (height/100)*50);
+  if (GuestFoul==6) {
+    text("P", (width/15)*14, (height/100)*50);
+  } else {
+    text(str_GuestFoul, (width/15)*14, (height/100)*50);
+  }
 
   //HOME TIME_OUT
   fill(0);
@@ -150,6 +158,7 @@ void PROscore_plus() {
   int W=width/100;
   int H=height/100;
 
+  
   //HOME BALL POSS.
   fill(0);
   rectMode(CORNER);
