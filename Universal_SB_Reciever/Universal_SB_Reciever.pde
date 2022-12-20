@@ -16,10 +16,19 @@ int Period=1;
 int Shotclock=24;
 int BallPos=0;
 
-import processing.serial.*;
+boolean Buzzer=false;
+boolean Bz_toggle=false;
 
+//UART
+boolean uart_enable=true;
+import processing.serial.*;
 Serial CommUART_port;
 int[] CommUART_data=new int[16];
+
+//Sound Effect
+import processing.sound.*;
+
+SoundFile Buzzer_SoundEffect;
 
 
 void setup() {
@@ -31,13 +40,21 @@ void setup() {
 
   String Serial_PortName = Serial.list()[0];
   CommUART_port= new Serial(this, Serial_PortName, 115200);
+  
+  Buzzer_SoundEffect=new SoundFile(this, "BuzzerSoundEffect.mp3");
 }
 
 void draw() {
   background(0);
-  PROscore_plus();
+  PROscore_MINI();
 
-  Comm_UART();
-  //Clear_DataBuff();
-  //print("SEC:");println(GTime_SS);
+  if(uart_enable==true) {
+    Comm_UART();
+  }
+  
+  if(Buzzer==true && Bz_toggle==false){
+    Buzzer_SoundEffect.play();
+    Bz_toggle=true;
+  }
+  
 }

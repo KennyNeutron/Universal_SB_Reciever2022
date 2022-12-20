@@ -61,6 +61,20 @@ void Comm_UART() {
     BallPos=CommUART_data[10]/100;
     Period=(CommUART_data[10]%100)/10;
     
+    int BZ=(CommUART_data[10]%10);
+    
+    if(BZ==0){
+      Buzzer=false;
+      Bz_toggle=false;
+    }else if(BZ==1){
+      Buzzer=true;
+    }else{
+      Buzzer=false;
+      Bz_toggle=false;
+    }
+    
+    
+    print("\n BUZZER:");println(BZ);
     
   }
 }
